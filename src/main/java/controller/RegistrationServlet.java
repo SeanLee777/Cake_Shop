@@ -1,9 +1,8 @@
 /**
- * Java Final Group Project
- * Class: CST8288 - Object Oriented Programming with Design Patterns
- * Section: 031
- * Author: Oliver Kadvany
- * Student ID: 041096826
+ * Java Final Group 11 Project
+ * Class: CST8319
+ * Author: Shanghao Li
+ * Student ID: 040903008
  */
 
 package controller;
