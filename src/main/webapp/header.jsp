@@ -1,37 +1,24 @@
 <!--
-* Java Final Group Project
-* Class: CST8319 - Group 11
+* Java Final Group 11 Project
+* Class: CST8319
 * Author: Shanghao Li
 * Student ID: 040903008
 -->
-<!DOCTYPE html>
-<html>
-<head>
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<div class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Cake Shop</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="products.jsp">Product Categories</a></li>
-                <li><a href="new.jsp">New Arrivals</a></li>
-                <li><a href="register.jsp">Register</a></li>
-                <li><a href="login.jsp">Login</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="search.jsp"><span class="glyphicon glyphicon-search"></span></a></li>
-                <li><a href="cart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-            </ul>
-        </div>
+
+<div id="navbar">
+    <img src="Images/Logo.png" alt="Cake Shop Logo" style="width: 80px; height: 60px;">
+
+    <div class="nav-items">
+        <ul>
+            <li><a href="index.jsp">Home</a></li>
+            <% 
+            if (session != null && session.getAttribute("currentUser") != null) {
+                out.println("<li><a href='LogoutServlet'>Logout</a></li>");
+            } else {
+                out.println("<li><a href='login.jsp'>Login</a></li>");
+                out.println("<li><a href='registration.jsp'>Register</a></li>");
+            }
+            %>
+        </ul>
     </div>
 </div>
-</body>
-</html>
-
