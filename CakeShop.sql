@@ -6,7 +6,7 @@
 */
 
 CREATE DATABASE IF NOT EXISTS cakeshop;
-USE FoodWasteReduction;
+USE cakeshop;
 
 CREATE TABLE Users
 (
