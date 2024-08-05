@@ -26,6 +26,7 @@ import java.util.Optional;
  * Servlet responsible for handling user login requests.
  * It authenticates users based on email and password, manages session creation on successful login,
  * and redirects to the appropriate page based on the outcome of the authentication process.
+ * trial
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
