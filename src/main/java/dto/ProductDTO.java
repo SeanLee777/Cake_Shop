@@ -1,3 +1,10 @@
+/**
+ * Java Final Group 11 Project
+ * Class: CST8319
+ * Author: DAIN CIBY THEKKEL
+ * Student ID: 040947640
+ */
+
 package dto;
 
 import java.util.Date;
