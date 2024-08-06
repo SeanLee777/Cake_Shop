@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConsumerDAO {
+
     private Connection getConnection() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/cakeshop";
         String user = "root";
-        String password = "2023ck@*";
+        String password = "sam123"; // Consider using environment variables or a secure vault for sensitive data.
         return DriverManager.getConnection(url, user, password);
     }
 
@@ -22,11 +23,7 @@ public class ConsumerDAO {
             statement.setInt(1, userID);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    Consumer consumer = new Consumer();
-                    consumer.setConsumerID(resultSet.getInt("consumerID"));
-                    consumer.setAddress(resultSet.getString("address"));
-                    consumer.setUserID(resultSet.getInt("userID"));
-                    return consumer;
+                    return mapResultSetToConsumer(resultSet);
                 }
             }
         }
@@ -40,11 +37,7 @@ public class ConsumerDAO {
             statement.setInt(1, consumerID);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    Consumer consumer = new Consumer();
-                    consumer.setConsumerID(resultSet.getInt("consumerID"));
-                    consumer.setAddress(resultSet.getString("address"));
-                    consumer.setUserID(resultSet.getInt("userID"));
-                    return consumer;
+                    return mapResultSetToConsumer(resultSet);
                 }
             }
         }
@@ -58,11 +51,7 @@ public class ConsumerDAO {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
             while (resultSet.next()) {
-                Consumer consumer = new Consumer();
-                consumer.setConsumerID(resultSet.getInt("consumerID"));
-                consumer.setAddress(resultSet.getString("address"));
-                consumer.setUserID(resultSet.getInt("userID"));
-                consumers.add(consumer);
+                consumers.add(mapResultSetToConsumer(resultSet));
             }
         }
         return consumers;
@@ -96,5 +85,13 @@ public class ConsumerDAO {
             statement.setInt(1, consumerID);
             statement.executeUpdate();
         }
+    }
+
+    private Consumer mapResultSetToConsumer(ResultSet resultSet) throws SQLException {
+        Consumer consumer = new Consumer();
+        consumer.setConsumerID(resultSet.getInt("consumerID"));
+        consumer.setAddress(resultSet.getString("address"));
+        consumer.setUserID(resultSet.getInt("userID"));
+        return consumer;
     }
 }

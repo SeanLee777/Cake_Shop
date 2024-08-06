@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<!DOC TYPE html>
 <html>
 <head>
     <title>Consumer Dashboard - Cake Shop</title>

@@ -1,22 +1,20 @@
 package org.cake_shop.dto;
 
-
-
 public class ConsumerDTO {
     private int consumerID;
     private String address;
-    private String userID;
+    private int userID; // Changed to int for consistency with the rest of the application
 
-    // Constructor
+    // Constructors
     public ConsumerDTO() {}
 
-    public ConsumerDTO(int consumerID, String address, String userID) {
+    public ConsumerDTO(int consumerID, String address, int userID) {
         this.consumerID = consumerID;
         this.address = address;
         this.userID = userID;
     }
 
-    // Getters and setters
+    // Getters and Setters
     public int getConsumerID() {
         return consumerID;
     }
@@ -33,11 +31,11 @@ public class ConsumerDTO {
         this.address = address;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
@@ -46,8 +44,7 @@ public class ConsumerDTO {
         return "ConsumerDTO{" +
                 "consumerID=" + consumerID +
                 ", address='" + address + '\'' +
-                ", userID='" + userID + '\'' +
+                ", userID=" + userID +
                 '}';
     }
 }
-

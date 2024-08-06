@@ -1,22 +1,20 @@
 package org.cake_shop.controller;
 
 
-
-
 import org.cake_shop.dto.OrderDTO;
 import org.cake_shop.model.Consumer;
-import jakarta.servlet.ServletException;
+import javax.servlet.ServletException;
 import org.cake_shop.service.ConsumerService;
 import org.cake_shop.service.OrderService;
 
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import .servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/SetOrderServlet")
+@WebServlet("/order")
 public class SetOrderServlet extends HttpServlet {
     private OrderService orderService = new OrderService();
     private ConsumerService consumerService = new ConsumerService();
@@ -26,10 +24,9 @@ public class SetOrderServlet extends HttpServlet {
         int productID = Integer.parseInt(request.getParameter("productID"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        // Assume we have a way to get the current userID
         int userID = (int) request.getSession().getAttribute("userID");
 
-        Consumer consumer = consumerService.getConsumerByID(userID);
+        Consumer consumer = consumerService.getConsumerByUserID(userID);
         int consumerID = consumer.getConsumerID();
 
         OrderDTO order = new OrderDTO();

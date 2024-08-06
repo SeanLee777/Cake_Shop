@@ -1,6 +1,7 @@
 package org.cake_shop.model;
 
 
+
 public class Consumer {
     private int consumerID;
     private String address;

@@ -1,7 +1,5 @@
 package org.cake_shop.model;
 
-
-
 import java.time.LocalDateTime;
 
 public class Order {
@@ -12,9 +10,10 @@ public class Order {
     private String productName;
     private LocalDateTime orderDate;
 
-    // Constructor
+    // No-argument constructor
     public Order() {}
 
+    // All-arguments constructor
     public Order(int orderID, int productID, int quantity, int consumerID, String productName, LocalDateTime orderDate) {
         this.orderID = orderID;
         this.productID = productID;
@@ -24,7 +23,7 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    // Getters and setters
+    // Getters and Setters
     public int getOrderID() {
         return orderID;
     }

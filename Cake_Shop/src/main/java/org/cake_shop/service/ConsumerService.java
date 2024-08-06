@@ -8,47 +8,50 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ConsumerService {
-    private ConsumerDAO consumerDAO = new ConsumerDAO();
+    private final ConsumerDAO consumerDAO;
 
-    public void addConsumer(ConsumerDTO consumerDTO) {
+    // Constructor for dependency injection
+    public ConsumerService(ConsumerDAO consumerDAO) {
+        this.consumerDAO = consumerDAO;
+    }
+
+    public void addConsumer(ConsumerDTO consumerDTO) throws ServiceException {
         try {
             consumerDAO.addConsumer(consumerDTO);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new ServiceException("Error adding consumer", e);
         }
     }
 
-    public Consumer getConsumerByID(int consumerID) {
+    public Consumer getConsumerByID(int consumerID) throws ServiceException {
         try {
             return consumerDAO.getConsumerByConsumerID(consumerID);
         } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
+            throw new ServiceException("Error retrieving consumer by ID", e);
         }
     }
 
-    public List<Consumer> getAllConsumers() {
+    public List<Consumer> getAllConsumers() throws ServiceException {
         try {
             return consumerDAO.getAllConsumers();
         } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
+            throw new ServiceException("Error retrieving all consumers", e);
         }
     }
 
-    public void updateConsumer(ConsumerDTO consumerDTO) {
+    public void updateConsumer(ConsumerDTO consumerDTO) throws ServiceException {
         try {
             consumerDAO.updateConsumer(consumerDTO);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new ServiceException("Error updating consumer", e);
         }
     }
 
-    public void deleteConsumer(int consumerID) {
+    public void deleteConsumer(int consumerID) throws ServiceException {
         try {
             consumerDAO.deleteConsumer(consumerID);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new ServiceException("Error deleting consumer", e);
         }
     }
 }
