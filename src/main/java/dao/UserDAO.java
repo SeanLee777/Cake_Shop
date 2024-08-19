@@ -42,7 +42,6 @@ public class UserDAO implements IUserDAO {
         ResultSet generatedKeys = null;
 
         String insertUserSQL = "INSERT INTO Users (name, email, password, userType, city, postalCode, phoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        String insertPreferenceSQL = "INSERT INTO UserFoodPreferences (userID, preferenceID) VALUES (?, ?)";
 
         try {
             conn = DatabaseUtil.getInstance().getConnection();

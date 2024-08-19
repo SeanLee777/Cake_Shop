@@ -37,9 +37,9 @@
             <% if (userType == UserType.RETAILER) { %>
             <td><a class="button" href="create_cake.jsp">Create Cake</a></td>
             <td><a class="button" href="view_all_orders" >View all Customers' Order</a></td>
-            <% } else if (userType == UserType.Suppler) {%>
+            <% } else if (userType == UserType.SUPPLER) {%>
             <td><a class="button" href="CharityIndex.jsp">Supplier Main Page</a></td>
-            <% } else if (userType == UserType.CONSUMER) {%>
+            <% } else if (userType == UserType.CONSUMERS) {%>
             <td><a class="button" href="ConsumerIndex.jsp">Consumers Main Page</a></td>            <% } %>
         </tr>
     </table>
