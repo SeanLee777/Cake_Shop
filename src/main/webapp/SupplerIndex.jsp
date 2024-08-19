@@ -18,15 +18,13 @@
             // User is logged in
             User user = (User) session.getAttribute("currentUser");
             UserType userType = user.getUserType();
-            if (userType == UserType.Suppler) { %>
+            if (userType == UserType.SUPPLER) { %>
     <h2>Welcome <%= user.getName() %>!</h2>
     <div class="dashboard-buttons">
-        <!-- Button to manage orders -->
-        <a href="ManageOrdersServlet" class="button">Manage Orders</a>
-        <!-- Button to update inventory -->
-        <a href="UpdateInventoryServlet" class="button">Update Inventory</a>
-        <!-- Button to view supplier profile -->
-        <a href="ViewProfileServlet" class="button">View Profile</a>
+
+        <!-- Modify the button link to point to addfood.jsp -->
+        <a href="addfood.jsp" class="button">Add Food Ingredient</a>
+
     </div>
     <% } else { %>
     <p>You do not have access to this page.</p>

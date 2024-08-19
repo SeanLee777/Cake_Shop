@@ -1,19 +1,31 @@
 /*
 * Java Final Group 11 Project
 * Class: CST8319
-* Author: Shanghao Li
-* Student ID: 040903008
+* Author: Shanghao Li, Feng Qi
+* Student ID: 040903008,041050147
 */
 
+
+
+DROP TABLE IF EXISTS InventoryItems;
+DROP TABLE IF EXISTS Inventory;
+DROP TABLE IF EXISTS OrderDetails;
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Products;
+DROP TABLE IF EXISTS Supplier;
+DROP TABLE IF EXISTS Consumers;
+DROP TABLE IF EXISTS Retailers;
+DROP TABLE IF EXISTS Users;
+
 CREATE DATABASE IF NOT EXISTS cakeshop;
-USE FoodWasteReduction;
+USE cakeshop;
 
 CREATE TABLE Users
 (
     userID               INT AUTO_INCREMENT PRIMARY KEY,
-    name                 VARCHAR(255)                                            NOT NULL,
-    email                VARCHAR(255)                                            NOT NULL UNIQUE,
-    password             VARCHAR(255)                                            NOT NULL,
+    name                 VARCHAR(255) NOT NULL,
+    email                VARCHAR(255) NOT NULL UNIQUE,
+    password             VARCHAR(255) NOT NULL,
     userType             ENUM ('Retailer', 'Consumers', 'Suppler') NOT NULL,
     city                 VARCHAR(255),
     postalCode           VARCHAR(10),
@@ -34,26 +46,28 @@ CREATE TABLE Consumers
     FOREIGN KEY (consumerID) REFERENCES Users (userID)
 );
 
-CREATE TABLE Suppler
+CREATE TABLE Supplier
 (
-    SupplerID      INT PRIMARY KEY,
-    SupplerDetails TEXT
+    supplierID      INT AUTO_INCREMENT PRIMARY KEY,
+    supplierName    VARCHAR(255) NOT NULL,
+    contactNumber   VARCHAR(20),
+    email           VARCHAR(255),
+    address         VARCHAR(500),
+    supplierDetails TEXT
 );
-
 
 CREATE TABLE Products
 (
     productID      INT AUTO_INCREMENT PRIMARY KEY,
     name           VARCHAR(255) NOT NULL,
     expirationDate DATE,
-    quantity       INT          NOT NULL,
+    quantity       INT NOT NULL,
     price          DECIMAL(10, 2) NOT NULL,
     retailerID     INT,
-    listingType    ENUM ('Donation', 'Sale') ,
+    listingType    ENUM ('Donation', 'Sale'),
     zipcode        VARCHAR(255),
     FOREIGN KEY (retailerID) REFERENCES Retailers (retailerID)
 );
-
 
 CREATE TABLE Orders
 (
@@ -61,11 +75,10 @@ CREATE TABLE Orders
     orderDate     DATETIME DEFAULT CURRENT_TIMESTAMP,
     productID     INT,
     quantity      INT NOT NULL,
-    userID INT,
-    FOREIGN KEY (userID) REFERENCES users (userID),
+    userID        INT,
+    FOREIGN KEY (userID) REFERENCES Users (userID),
     FOREIGN KEY (productID) REFERENCES Products (productID)
 );
-
 
 CREATE TABLE OrderDetails
 (
@@ -73,7 +86,7 @@ CREATE TABLE OrderDetails
     orderID       INT,
     productID     INT,
     quantity      INT NOT NULL,
-    userID INT,
+    userID        INT,
     FOREIGN KEY (userID) REFERENCES Users (userID),
     FOREIGN KEY (orderID) REFERENCES Orders (orderID),
     FOREIGN KEY (productID) REFERENCES Products (productID)
@@ -89,9 +102,10 @@ CREATE TABLE Inventory
 CREATE TABLE InventoryItems
 (
     inventoryItemID INT AUTO_INCREMENT PRIMARY KEY,
-    inventoryID     INT,
-    productID       INT,
-    quantity        INT NOT NULL,
-    FOREIGN KEY (inventoryID) REFERENCES Inventory (inventoryID),
-    FOREIGN KEY (productID) REFERENCES Products (productID)
-)
+    inventoryID     INT NOT NULL,  -- 确保 inventoryID 不允许为空
+    productID       INT NOT NULL,  -- 确保 productID 不允许为空
+    quantity        INT NOT NULL,  -- 保证 quantity 是必须的
+    unit            VARCHAR(50),   -- 添加 unit 列以匹配表单中的 unit 字段
+    price           DECIMAL(10, 2) -- 添加 price 列以匹配表单中的 price 字段
+
+);

@@ -45,8 +45,8 @@
                 <label for="userType">User Type:</label>
                 <select id="userType" name="userType">
                     <option value="RETAILER">Retailer</option>
-                    <option value="CONSUMER">Consumer</option>
-                    <option value="CHARITABLE_ORGANIZATION">Supplier</option>
+                    <option value="CONSUMERS">Consumers</option>
+                    <option value="SUPPLER">Suppler</option>
                 </select>
             </div>
             <div class="flex-container">
