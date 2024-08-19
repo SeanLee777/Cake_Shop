@@ -99,6 +99,7 @@ CREATE TABLE Inventory
     FOREIGN KEY (retailerID) REFERENCES Retailers (retailerID)
 );
 
+
 CREATE TABLE InventoryItems
 (
     inventoryItemID INT AUTO_INCREMENT PRIMARY KEY,
@@ -109,3 +110,6 @@ CREATE TABLE InventoryItems
     price           DECIMAL(10, 2) -- 添加 price 列以匹配表单中的 price 字段
 
 );
+
+ALTER TABLE InventoryItems
+ADD COLUMN name VARCHAR(255);
