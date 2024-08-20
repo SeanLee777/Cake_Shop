@@ -92,13 +92,6 @@ CREATE TABLE OrderDetails
     FOREIGN KEY (productID) REFERENCES Products (productID)
 );
 
-CREATE TABLE Inventory
-(
-    inventoryID INT AUTO_INCREMENT PRIMARY KEY,
-    retailerID  INT,
-    FOREIGN KEY (retailerID) REFERENCES Retailers (retailerID)
-);
-
 
 CREATE TABLE InventoryItems
 (
