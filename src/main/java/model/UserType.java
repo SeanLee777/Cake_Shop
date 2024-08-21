@@ -16,8 +16,8 @@ import org.apache.logging.log4j.Logger;
  */
 public enum UserType {
     RETAILER("Retailer"),
-    CONSUMER("Consumer"),
-    Suppler("Suppler");
+    CONSUMERS("Consumers"),
+    SUPPLER("Suppler");
 
     /**
      * Logger for logging related information and errors.

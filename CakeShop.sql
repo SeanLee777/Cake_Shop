@@ -31,6 +31,7 @@ CREATE TABLE Consumers
 (
     consumerID INT PRIMARY KEY,
     address    TEXT,
+    userID  INT,
     FOREIGN KEY (consumerID) REFERENCES Users (userID)
 );
 

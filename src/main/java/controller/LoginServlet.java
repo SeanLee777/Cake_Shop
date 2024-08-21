@@ -12,11 +12,11 @@ import model.User;
 import util.PasswordHashingUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
 import java.sql.SQLException;
@@ -33,13 +33,13 @@ public class LoginServlet extends HttpServlet {
     /**
      * Serial version UID for serialization and deserialization.
      */
-	@Serial
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**
      * Logger for logging login related information and errors.
      */
-	private static final Logger logger = LogManager.getLogger(LoginServlet.class);
+    private static final Logger logger = LogManager.getLogger(LoginServlet.class);
 
     /**
      * Processes the POST request for user login.
@@ -49,9 +49,9 @@ public class LoginServlet extends HttpServlet {
      * @param response HttpServletResponse object that contains the response the servlet sends to the client
      * @throws IOException if an I/O error occurs
      */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
